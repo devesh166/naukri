@@ -1,0 +1,22 @@
+{
+  "name": "naukri",
+  "version": "1.0.0",
+  "description": "job listing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devesh166/naukri.git"
+  },
+  "author": "Devesh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devesh166/naukri/issues"
+  },
+  "homepage": "https://github.com/devesh166/naukri#readme",
+  "dependencies": {
+    "cors": "^2.8.5"
+  }
+}
