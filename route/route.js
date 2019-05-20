@@ -6,6 +6,7 @@ const applyCollection =require('../controllers/apply')
 const jobsCollection =require('../controllers/jobs')
 
 app.get('/users', usersCollection.getAllUsers)
+
 //----------get user by id-----------------
 app.get('/users/:id', usersCollection.getUserByID)
 
@@ -28,8 +29,10 @@ app.post('/jobs', jobsCollection.addJobs)
 //------------Update Jobs---------
 app.put('/jobs/', jobsCollection.updateJobs)
 
-//------------get all jobs---------
+//------------get all jobs---------getAllJobs2
 app.get('/jobs', jobsCollection.getAllJobs)
+app.get('/jobs2/:page', jobsCollection.getAllJobs2)
+
 //------------company list job ------------
 app.get('/jobs/:name',jobsCollection.companyJobs)
 
