@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/devesh166/naukri#readme",
   "dependencies": {
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "socket.io": "^2.2.0"
   }
 }

@@ -4,7 +4,7 @@ module.exports=(app)=>{
 const usersCollection =require('../controllers/users')
 const applyCollection =require('../controllers/apply')
 const jobsCollection =require('../controllers/jobs')
-
+const chatCollection =require('../controllers/chat')
 app.get('/users', usersCollection.getAllUsers)
 
 //----------get user by id-----------------
@@ -31,7 +31,7 @@ app.put('/jobs/', jobsCollection.updateJobs)
 
 //------------get all jobs---------getAllJobs2
 app.get('/jobs', jobsCollection.getAllJobs)
-app.get('/jobs2/:page', jobsCollection.getAllJobs2)
+app.get('/jobs2/:page', jobsCollection.getAllJobs2) //----------Pagination--------
 
 //------------company list job ------------
 app.get('/jobs/:name',jobsCollection.companyJobs)
@@ -48,6 +48,9 @@ app.post('/appliedUsers', applyCollection.getAplied)
 
 //----------change job status----------
 app.put('/apply', applyCollection.changeStatus)
+
+//------------message-----------------
+app.get('/message',chatCollection.getMessage)
 
 }
  

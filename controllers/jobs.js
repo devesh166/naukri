@@ -23,7 +23,7 @@ exports.getAllJobs = (req, res) => {
 
 exports.getAllJobs2 = (req, res) => {
     var pageNo = req.params.page;
-    var size = 2;
+    var size = 4;
     jobs.count({}, (err, total) => {
         if (err) {
             res.json({ 'message': err });
