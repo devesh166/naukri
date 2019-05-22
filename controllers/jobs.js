@@ -56,7 +56,40 @@ exports.companyJobs = (req, res) => {
 
 
 }
+exports.companyJobs2 = (req, res) => {
+    // jobs.find({ name: req.params.name }).exec((err, user) => {
+    //     if (err) {
+    //         console.log("No data found")
+    //         res.send("error")
+    //     } else {
+    //         console.log("fetched user list")
+    //         res.send(user)
+    //     }
 
+    // }
+    
+    // )
+    var pageNo = req.params.page;
+    var size = 4;
+    jobs.count({}, (err, total) => {
+        if (err) {
+            res.json({ 'message': err });
+        }
+        jobs.find({ name: req.params.name }, (err, data) => {
+            if (err) {
+                res.send({ 'message': err });
+            }
+            else {
+                var pages = Math.ceil(total / size);
+                console.log(total);
+                res.json({ 'message': data, 'page': pages })
+            }
+        })
+        .limit(size).skip(size * (pageNo - 1))
+    })
+
+
+}
 exports.addJobs = (req, res) => {
     if (role[req.body.role] < 2) {
         user.find({ name: req.body.name })

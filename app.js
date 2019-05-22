@@ -2,10 +2,9 @@ const chats = require('./model/chatModel');
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const port = process.env.DEV1 || 3000;
+const port = process.env.DEV1 || 5001;
 const cors = require('cors');
 const app = express();
-
 
 // var http = require('http').Server(app);
 // var io = require('socket.io')(http);
@@ -15,8 +14,6 @@ const app = express();
 const http = require('http');
 const io = require('socket.io');
  
-
-
 const server = http.createServer(app);
 const socketIo = io(server);
 app.use(bodyParser.json());
@@ -58,9 +55,9 @@ socketIo.on('connection', socket => {
   clients.push(username)
   users[userID]  = socket;
   clients = [...new Set(clients)];
-  console.log(users)
+  // console.log(users)
   socket.on('client:message', data => {
-    console.log(data.sendToID)
+    console.log(data)
 
     var userSocket  = users[data.sendToID] || null;
     // console.log(users['dev '])
@@ -73,7 +70,7 @@ socketIo.on('connection', socket => {
           // res.send("error")
       } else {
            
-        if(chat===null){
+        if(chat===null ){
             let tempChat = new chats();
             tempChat.senderID=userID;
             tempChat.recieverID = data.sendToID
@@ -82,10 +79,10 @@ socketIo.on('connection', socket => {
             tempChat.save((err, users) => {
 
               if (err) {
-                console.log(err)
+                // console.log(err)
                   //res.send(err)
               } else {
-               console.log(chat)
+              //  console.log(chat)
                  // res.send(users);
               }
           })
@@ -97,9 +94,9 @@ socketIo.on('connection', socket => {
           }}, { new: true }, (err, element) => {
             if (err) {
                 // res.send(console.log(chat))
-                console.log(chat)
+                // console.log(chat)
             } else {
-              console.log(element)
+              // console.log(element)
                 // res.send(element);
             }
         })
@@ -124,6 +121,7 @@ socketIo.on('connection', socket => {
       }
       console.log("Message was succefully sent!");
     }else{
+
       console.log('User socket unavailable');
     }
   });

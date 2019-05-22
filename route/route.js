@@ -35,7 +35,7 @@ app.get('/jobs2/:page', jobsCollection.getAllJobs2) //----------Pagination------
 
 //------------company list job ------------
 app.get('/jobs/:name',jobsCollection.companyJobs)
-
+app.get('/jobs2/:name',jobsCollection.companyJobs2)
 
 //----------apply job----------
 app.post('/apply',applyCollection.applyJob )
@@ -50,7 +50,7 @@ app.post('/appliedUsers', applyCollection.getAplied)
 app.put('/apply', applyCollection.changeStatus)
 
 //------------message-----------------
-app.get('/message',chatCollection.getMessage)
+app.post('/message',chatCollection.getMessage)
 
 }
  
